@@ -1,0 +1,15 @@
+---
+- name: Configure nginx web server
+  hosts: ec2
+  become: true
+  tasks:
+    - name: install nginx and update cache
+      yum:
+        name: nginx
+        state: present
+        update_cache: yes
+
+    - name: start nginx server
+      service:
+        name: nginx
+        state: started
